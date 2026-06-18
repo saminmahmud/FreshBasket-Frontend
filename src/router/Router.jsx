@@ -15,8 +15,12 @@ import PublicRoute from "./PublicRoute";
 import Address from "../pages/customer/Address";
 import ProductDetail from "../pages/public/ProductDetail";
 import TrackOrder from "../pages/public/TrackOrder";
-import Dashboard from './../pages/admin/Dashboard';
 import Tracking from "../pages/public/Tracking";
+import AdminDashboard from './../components/pages/admin/AdminDashboard';
+import AdminAddProduct from './../components/pages/admin/AdminAddProduct';
+import AdminOrder from './../components/pages/admin/AdminOrder';
+import AdminUsers from "../components/pages/admin/AdminUsers";
+import Dashboard from "../pages/admin/Dashboard";
 
 export const Router = createBrowserRouter([
 	{
@@ -40,10 +44,38 @@ export const Router = createBrowserRouter([
 			{ path: "/login", element: <PublicRoute><Login /></PublicRoute> },
 			{ path: "/register", element: <PublicRoute><Register /></PublicRoute> },
 
-			{ path: "/admin/dashboard", element: <RoleProtectedRoute allowedRoles={["admin"]}><Dashboard /></RoleProtectedRoute> },
-			{ path: "/delivery-partner/dashboard", element: <RoleProtectedRoute allowedRoles={["delivery_partner"]}><Dashboard /></RoleProtectedRoute> },
+			// { path: "/delivery-partner/dashboard", element: <RoleProtectedRoute allowedRoles={["delivery_partner"]}><Dashboard /></RoleProtectedRoute> },
+			// { path: "/admin/dashboard", element: <RoleProtectedRoute allowedRoles={["admin"]}><AdminDashboard /></RoleProtectedRoute> },
+			// { path: "/admin/add-product", element: <RoleProtectedRoute allowedRoles={["admin"]}><AdminAddProduct /></RoleProtectedRoute> },
+			// { path: "/admin/orders", element: <RoleProtectedRoute allowedRoles={["admin"]}><AdminOrder /></RoleProtectedRoute> },
+			// { path: "/admin/users", element: <RoleProtectedRoute allowedRoles={["admin"]}><AdminUsers /></RoleProtectedRoute> },
 
-
+			{
+				path: "/admin",
+				element: (
+					<RoleProtectedRoute allowedRoles={["admin"]}>
+					<Dashboard />
+					</RoleProtectedRoute>
+				),
+				children: [
+					{
+					path: "dashboard",
+					element: <AdminDashboard />
+					},
+					{
+					path: "add-product",
+					element: <AdminAddProduct />
+					},
+					{
+					path: "orders",
+					element: <AdminOrder />
+					},
+					{
+					path: "users",
+					element: <AdminUsers />
+					}
+				]
+			},
 			{ path: "*", element: <NotFound /> },
 		],
 	},

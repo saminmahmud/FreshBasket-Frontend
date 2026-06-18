@@ -20,7 +20,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const RootLayout = () => {
 	const dispatch = useDispatch();
-  	const { data, isSuccess, isError, isLoading } = useGetMeQuery();
+  	const { data, isSuccess, isLoading, isFetching } = useGetMeQuery();
 
   	const [cartOpen, setCartOpen] = useState(false);
 	const [cartItems, setCartItems] = useState(() => getCartItems());
@@ -30,19 +30,16 @@ const RootLayout = () => {
 	}, []);
 
 	useEffect(() => {
-		if (isSuccess && data) {
-			dispatch(setUser(data));
+		if (isSuccess) {
+			dispatch(setUser(data ?? null)); 
 		}
-		if (isError) {
-			dispatch(setUser(null));
-		}
-	}, [data, isSuccess, isError, dispatch]);
+	}, [data, isSuccess, dispatch]);
 
 	useEffect(() => {
 		saveCartItems(cartItems);
 	}, [cartItems]);
 
-	if (isLoading) {
+	if (isLoading || isFetching) {
 		return <PageLoader />;
 	}
 

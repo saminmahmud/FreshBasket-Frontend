@@ -237,12 +237,12 @@ export default function Address() {
               <button type="submit" onClick={handleSubmit} disabled={isUpdating}
                 className="w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-[#1a4731] hover:bg-[#0d3320] active:scale-[0.98] text-white font-bold text-sm transition-all disabled:opacity-60 shadow-lg shadow-[#1a4731]/20">
                 {isUpdating ? (
-                  <>
+                  <div className="flex items-center justify-center gap-2">
                     <svg className="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                       <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeOpacity="0.25"/><path d="M21 12a9 9 0 00-9-9"/>
                     </svg>
                     Saving...
-                  </>
+                  </div>
                 ) : "Submit Changes"}
               </button>
             </div>

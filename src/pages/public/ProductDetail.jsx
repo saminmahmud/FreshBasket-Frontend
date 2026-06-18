@@ -93,11 +93,13 @@ const ProductDetail = () => {
             <div className="relative p-6 sm:p-10 flex flex-col">
               {/* Badge */}
               <div className="mb-4 flex items-center gap-2">
+              {parseFloat(productDetail.final_discount) > 0 && (
                 <span className="bg-orange-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-md">
                   {productDetail.final_discount}% OFF
                 </span>
-                {productDetail.is_organic && (
-                  <div className="flex items-center gap-1"> 
+              )}
+              {productDetail.is_organic && (
+                <div className="flex items-center gap-1"> 
                   <span className="bg-green-700 text-white text-[11px] font-bold px-2.5 py-1 rounded-md flex items-center gap-1">
                     <FaLeaf className="text-green-100" />
                     Organic

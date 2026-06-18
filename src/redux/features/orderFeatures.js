@@ -33,6 +33,12 @@ const orderApi = baseApi.injectEndpoints({
       invalidatesTags: ["MyOrders"],
     }),
 
+    getAdminDashboard: builder.query({
+      query: () => ({
+        url: "/admin-dashboard/",
+      }),
+    }),
+
 
 
   }),
@@ -42,5 +48,6 @@ export const {
     useGetAllDeliveryChargesQuery,
     useCreateOrderMutation,
     useGetMyOrdersQuery,
-    useGetOrderTrackQuery
+    useGetOrderTrackQuery,
+    useGetAdminDashboardQuery
 } = orderApi;

@@ -36,8 +36,6 @@ const Products = () => {
 	useEffect(() => {
 		const params = {};
 
-		setPage(1);
-
 		if (selectedCategory)
 			params.category = selectedCategory;
 
@@ -50,9 +48,12 @@ const Products = () => {
 		if (ordering && ordering !== "-created_at")
 			params.ordering = ordering;
 
+		if (page > 1)
+    		params.page = page;
+
 		setSearchParams(params);
 
-	}, [selectedCategory, minPrice, maxPrice, ordering, setSearchParams]);
+	}, [page, selectedCategory, minPrice, maxPrice, ordering, setSearchParams]);
 
 	
 	

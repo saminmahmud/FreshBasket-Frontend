@@ -12,9 +12,14 @@ const FetchError = ({message="Failed to load. Please check your internet connect
 					{message}
 				</h3>
 			</div>
-			<button onClick={()=>navigate(-1)} className="px-4 py-2 rounded-lg bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 active:scale-[0.98] text-white font-bold text-sm transition-all shadow-lg shadow-red-700/25">
-				Go back
+			<div className="flex items-center gap-4">
+			<button onClick={()=>navigate("/")} className="px-4 py-2 rounded-lg bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 active:scale-[0.98] text-white font-bold text-sm transition-all shadow-lg shadow-red-700/25">
+				Go to Home
 			</button>
+			<button onClick={()=>window.location.reload()} className="px-4 py-2 rounded-lg bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 active:scale-[0.98] text-white font-bold text-sm transition-all shadow-lg shadow-green-700/25">
+				Reload Page
+			</button>
+			</div>
 		</div>
 		</div>
 	);

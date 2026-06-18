@@ -171,7 +171,7 @@ const Header = ({ cartCount, onCartOpen }) => {
 												Deals
 											</Link>
 											{user.role === "admin" && (
-												<Link to="/admin" onClick={() => setDropdownOpen(false)} className="flex items-center gap-3 px-4 py-2.5 text-sm text-orange-500 font-semibold hover:bg-orange-50 transition-colors">
+												<Link to="/admin/dashboard" onClick={() => setDropdownOpen(false)} className="flex items-center gap-3 px-4 py-2.5 text-sm text-orange-500 font-semibold hover:bg-orange-50 transition-colors">
 													<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
 														<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
 													</svg>
@@ -239,7 +239,7 @@ const Header = ({ cartCount, onCartOpen }) => {
 						<>
 							<Link to="/my-orders" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 rounded-lg">My Orders</Link>
 							{user.role === "admin" && (
-								<Link to="/admin" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-semibold text-orange-500 hover:bg-orange-50 rounded-lg">Admin Panel</Link>
+								<Link to="/admin/dashboard" onClick={() => setMobileMenuOpen(false)} className="block px-3 py-2 text-sm font-semibold text-orange-500 hover:bg-orange-50 rounded-lg">Admin Panel</Link>
 							)}
 							<button onClick={handleLogout} className="block w-full text-left px-3 py-2 text-sm text-red-500 hover:bg-red-50 rounded-lg">Logout</button>
 						</>

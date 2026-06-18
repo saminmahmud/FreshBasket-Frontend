@@ -3,31 +3,28 @@ import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../components/reusable/Logo";
 import EyeIcon from "../../components/reusable/EyeIcon";
 import { useLoginMutation } from "../../redux/features/authFeatures";
-import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/slices/authSlice";
 import toast from 'react-hot-toast';
 
 const Login = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [login, { isLoading}] = useLoginMutation();
 
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("admin");
+  const [password, setPassword] = useState("admin");
   const [showPass, setShowPass] = useState(false);
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  try {
-    const res = await login({ username, password }).unwrap();
-    // dispatch(setUser(res.user || res));
-    navigate("/");
-  } catch (err) {
-    // console.error(err);
-    toast.error("Invalid username or password");
-  }
-};
+    try {
+      await login({ username, password }).unwrap();
+      navigate("/");
+      toast.success("Logged in successfully");
+    } catch (err) {
+      // console.error(err);
+      toast.error("Invalid username or password");
+    }
+  };
     
 
   return (
@@ -159,12 +156,12 @@ const Login = () => {
               <button type="submit" disabled={isLoading}
                 className="w-full flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-[#1a4731] hover:bg-[#0d3320] active:scale-[0.98] text-white font-bold text-sm transition-all disabled:opacity-60 shadow-lg shadow-[#1a4731]/20">
                 {isLoading ? (
-                  <>
+                  <div className="flex items-center justify-center gap-2">
                     <svg className="animate-spin" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                       <path d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" strokeOpacity="0.25"/><path d="M21 12a9 9 0 00-9-9"/>
                     </svg>
                     Signing in...
-                  </>
+                  </div>
                 ) : "Sign In →"}
               </button>
             </form>
