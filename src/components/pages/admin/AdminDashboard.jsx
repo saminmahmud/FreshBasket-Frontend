@@ -2,12 +2,15 @@ import { useGetAdminDashboardQuery } from '../../../redux/features/orderFeatures
 import Loader from '../../reusable/loader';
 import { Link } from 'react-router-dom';
 
-const STATUS_STYLE = {
-  "delivered":        "bg-green-100 text-green-700",
-  "pending":         "bg-gray-100 text-gray-500",
-  "confirmed":        "bg-blue-100 text-blue-700",
-  "cancelled":        "bg-red-100 text-red-600",
-};
+const STATUS_STYLE = [
+    {key: "pending", label:"Pending", class:"bg-gray-100 text-gray-700",},
+    {key: "confirmed", label:"Confirmed", class:"bg-blue-100 text-blue-700",},
+    {key: "assigned_to_delivery", label:"Assigned to Delivery", class:"bg-green-100 text-green-700",},
+    {key: "packed", label:"Packed", class:"bg-orange-100 text-orange-600",},
+    {key: "out_for_delivery", label:"Out for Delivery", class:"bg-blue-100 text-blue-700",},
+    {key: "delivered", label:"Delivered", class:"bg-green-100 text-green-700",},
+    {key:"cancelled", label:"Cancelled", class:"bg-red-100 text-red-600"}
+]
 
 
 const AdminDashboard = () => {
@@ -72,7 +75,7 @@ const AdminDashboard = () => {
                     <td className="px-5 py-3.5 text-sm text-gray-600 whitespace-nowrap">{o.items.length}</td>
                     <td className="px-5 py-3.5 text-sm font-semibold text-gray-900 whitespace-nowrap">{parseFloat(o.total_price).toFixed(2)}Tk</td>
                     <td className="px-5 py-3.5 whitespace-nowrap">
-                    <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full ${STATUS_STYLE[o.order_status]}`}>{o.order_status}</span>
+                    <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full ${STATUS_STYLE.find(s => s.key === o.order_status)?.class}`}>{STATUS_STYLE.find(s => s.key === o.order_status)?.label}</span>
                     </td>
                     <td className="px-5 py-3.5 text-sm text-gray-400 whitespace-nowrap">{new Date(o.created_at).toLocaleDateString()}</td>
                 </tr>

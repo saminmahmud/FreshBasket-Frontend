@@ -67,9 +67,9 @@ const NAV = [
 		),
 	},
 	{
-		key: "users",
-		label: "Users",
-		path: "/admin/users",
+		key: "delivery-partners",
+		label: "Delivery Partners",
+		path: "/admin/delivery-partners",
 		icon: (
 			<svg
 				width="17"

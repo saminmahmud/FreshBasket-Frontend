@@ -19,8 +19,9 @@ import Tracking from "../pages/public/Tracking";
 import AdminDashboard from './../components/pages/admin/AdminDashboard';
 import AdminAddProduct from './../components/pages/admin/AdminAddProduct';
 import AdminOrder from './../components/pages/admin/AdminOrder';
-import AdminUsers from "../components/pages/admin/AdminUsers";
+import AdminUsers from "../components/pages/admin/DeliveryPartners";
 import Dashboard from "../pages/admin/Dashboard";
+import DeliveryPartners from "../components/pages/admin/DeliveryPartners";
 
 export const Router = createBrowserRouter([
 	{
@@ -44,12 +45,6 @@ export const Router = createBrowserRouter([
 			{ path: "/login", element: <PublicRoute><Login /></PublicRoute> },
 			{ path: "/register", element: <PublicRoute><Register /></PublicRoute> },
 
-			// { path: "/delivery-partner/dashboard", element: <RoleProtectedRoute allowedRoles={["delivery_partner"]}><Dashboard /></RoleProtectedRoute> },
-			// { path: "/admin/dashboard", element: <RoleProtectedRoute allowedRoles={["admin"]}><AdminDashboard /></RoleProtectedRoute> },
-			// { path: "/admin/add-product", element: <RoleProtectedRoute allowedRoles={["admin"]}><AdminAddProduct /></RoleProtectedRoute> },
-			// { path: "/admin/orders", element: <RoleProtectedRoute allowedRoles={["admin"]}><AdminOrder /></RoleProtectedRoute> },
-			// { path: "/admin/users", element: <RoleProtectedRoute allowedRoles={["admin"]}><AdminUsers /></RoleProtectedRoute> },
-
 			{
 				path: "/admin",
 				element: (
@@ -71,8 +66,8 @@ export const Router = createBrowserRouter([
 					element: <AdminOrder />
 					},
 					{
-					path: "users",
-					element: <AdminUsers />
+					path: "delivery-partners",
+					element: <DeliveryPartners />
 					}
 				]
 			},

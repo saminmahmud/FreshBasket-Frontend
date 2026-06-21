@@ -49,8 +49,11 @@ export const authApi = baseApi.injectEndpoints({
       invalidatesTags: ["GetMe"],
     }),
 
+    getDeliveryPartners: builder.query({
+      query: () => "/users?role=delivery_partner",
+    }),
 
   }),
 });
 
-export const { useGetMeQuery, useLoginMutation, useGetAddressQuery, useUpdateAddressMutation, useUpdateMyImageMutation, useLazyGetAddressQuery, useLogoutMutation } = authApi;
+export const { useGetMeQuery, useLoginMutation, useGetAddressQuery, useUpdateAddressMutation, useUpdateMyImageMutation, useLazyGetAddressQuery, useLogoutMutation, useGetDeliveryPartnersQuery } = authApi;
