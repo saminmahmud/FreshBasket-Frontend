@@ -51,9 +51,27 @@ export const authApi = baseApi.injectEndpoints({
 
     getDeliveryPartners: builder.query({
       query: () => "/users?role=delivery_partner",
+      providesTags: ["GetDeliveryPartners"],
+    }),
+
+    updateDeliveryPartnerStatus: builder.mutation({
+      query: (id) => ({
+        url: `users/delivery-partners/${id}/update-active-status/`,
+        method: "PATCH",
+      }),
+      invalidatesTags: ["GetDeliveryPartners"],
+    }),
+
+    createDeliveryPartner: builder.mutation({
+      query: (data) => ({
+        url: "users/delivery-partners/create/",
+        method: "POST",
+        body: data,
+      }),
+      invalidatesTags: ["GetDeliveryPartners"],
     }),
 
   }),
 });
 
-export const { useGetMeQuery, useLoginMutation, useGetAddressQuery, useUpdateAddressMutation, useUpdateMyImageMutation, useLazyGetAddressQuery, useLogoutMutation, useGetDeliveryPartnersQuery } = authApi;
+export const { useGetMeQuery, useLoginMutation, useGetAddressQuery, useUpdateAddressMutation, useUpdateMyImageMutation, useLazyGetAddressQuery, useLogoutMutation, useGetDeliveryPartnersQuery, useUpdateDeliveryPartnerStatusMutation, useCreateDeliveryPartnerMutation } = authApi;
